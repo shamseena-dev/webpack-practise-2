@@ -39,7 +39,7 @@ webpack.config.js
 
 7.
 ===>> Now dist ==> "index.html"==//auto generated new file !!!
-
+---------------------------------------------------
 <!DOCTYPE html>
 <html>
   <head>
@@ -49,7 +49,77 @@ webpack.config.js
   <body>
   <script type="text/javascript" src="main.5bdda50986d06f5d5708.js"></script></body>
 </html>
-
+------------------------------------------------------
 ==============
-//here mai.contenthash file is auto linked to <script> tag
+//here main.contenthash file is auto linked to <script> tag
+
+-------------COMMIT 4------------------
+
+8.Now we need to add contents of original "index.html" to this new index.html inside "dist"
+
+9. create a new template.html (inside src)
+src/html/template.html
+
+10. copy contents of original index.html (except script tag and anythig else can be avoided)==>template.html
+---------------
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Webpack demo</title>
+</head>
+<body>
+	<h1 id="title">WEBPACK PRACTISE</h1>
+	<img src= "./src/images/travel.jpg">
+	<p id="text"> webpack paragraph text</p>
+<!--<script type="text/javascript" src= "./dist/main.js"></script>-->
+<!--<script type="text/javascript" src= "./src/app/index.js"></script>
+<script type="text/javascript" src= "./src/app/second.js"></script>
+<script type="text/javascript" src= "./src/app/third_depOnSecond.js"></script>-->
+
+</body>
+</html>
+
+----------------------
+11. add it as a template in here:
+
+webpack.config.js
+-----------------
+plugins: [new HtmlWebpackPlugin({
+		template : "./src/html/template.html"
+		}
+		)],
+----------------------
+
+12. npm start
+
+13.. WWOOWWW!!   now 7 ==>
+
+dist/index.html
+------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Webpack demo</title>
+</head>
+<body>
+	<h1 id="title">WEBPACK PRACTISE</h1>
+	<img src= "./src/images/travel.jpg">
+	<p id="text"> webpack paragraph text</p>
+<!--<script type="text/javascript" src= "./dist/main.js"></script>-->
+<!--<script type="text/javascript" src= "./src/app/index.js"></script>
+    <script type="text/javascript" src= "./src/app/second.js"></script>
+     script type="text/javascript" src= "./src/app/third_depOnSecond.js"></script>  
+-->
+
+<script type="text/javascript" src="main.5bdda50986d06f5d5708.js"></script></body>
+</html>
+
+------------------------------------------------------------------
+
+
+==================  COMMIT 5 ===============================
+
+
+
+
 
